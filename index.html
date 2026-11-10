@@ -1,47 +1,91 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Moein Abbasi</title>
-    <meta
-      name="description"
-      content="Moein Abbasi is a DevOps engineer and software developer with a decade of experience building real-time backends in Erlang, Elixir and Go, now running Kubernetes, GitOps and infrastructure as code. Based in Türkiye."
-    />
-
+    <meta name="description" content="Moein Abbasi is a DevOps engineer and software developer with a decade of experience building real-time backends in Erlang, Elixir and Go, now running Kubernetes, GitOps and infrastructure as code. Based in Türkiye." />
+    
     <!-- Open Graph & Meta -->
     <meta property="og:title" content="Moein Abbasi" />
-    <meta
-      property="og:description"
-      content="Moein Abbasi is a DevOps engineer and software developer with a decade of experience building real-time backends in Erlang, Elixir and Go, now running Kubernetes, GitOps and infrastructure as code. Based in Türkiye."
-    />
+    <meta property="og:description" content="Moein Abbasi is a DevOps engineer and software developer with a decade of experience building real-time backends in Erlang, Elixir and Go, now running Kubernetes, GitOps and infrastructure as code. Based in Türkiye." />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Moein Abbasi" />
     <meta name="twitter:card" content="summary" />
-    <meta
-      property="og:image"
-      content="https://moein-abbasi.cdn.modulify.website/images/moein-abbasi.jpg"
-    />
+    <meta name="twitter:title" content="Moein Abbasi" />
+    <meta name="twitter:description" content="Moein Abbasi is a DevOps engineer and software developer with a decade of experience building real-time backends in Erlang, Elixir and Go, now running Kubernetes, GitOps and infrastructure as code. Based in Türkiye." />
+    <meta property="og:image" content="https://moein-abbasi.cdn.modulify.website/images/moein-abbasi.jpg" />
+    <meta property="og:image:alt" content="Portrait of Moein Abbasi" />
+    <meta name="twitter:image" content="https://moein-abbasi.cdn.modulify.website/images/moein-abbasi.jpg" />
     <meta name="theme-color" content="#f6f3ec" />
 
-    <!-- Web Fonts (Replaces your missing _next/media fonts) -->
+    <!-- Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
-    <!-- Links to your CSS file -->
-    <link rel="stylesheet" href="./style.css" />
-
-    <style>
-      :root {
-        --font-app-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-        --font-app-mono: "IBM Plex Mono", ui-monospace, monospace;
-        --font-app-heading: "Instrument Serif", Georgia, serif;
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"IBM Plex Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+              mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+              heading: ['"Instrument Serif"', 'Georgia', 'serif'],
+            },
+            colors: {
+              background: '#f6f3ec',
+              foreground: '#1a1a1a',
+              primary: '#1a1a1a',
+              'primary-foreground': '#ffffff',
+              muted: {
+                DEFAULT: '#e5e5e5',
+                foreground: '#737373',
+              },
+              border: '#d4d4d4',
+              card: '#ffffff',
+              signal: {
+                DEFAULT: '#c2410c',
+                foreground: '#ffffff',
+                soft: '#fbe9e7'
+              },
+              terminal: {
+                DEFAULT: '#191919',
+                foreground: '#d4d4d4',
+                border: '#333333',
+                muted: '#8b949e',
+                accent: '#10b981'
+              }
+            }
+          }
+        }
       }
-      html {
-        scroll-behavior: smooth;
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          @apply bg-background text-foreground antialiased;
+        }
+      }
+      /* Custom animations from the original code */
+      .animate-hop {
+        animation: hop 0.5s ease-out forwards;
+        opacity: 0;
+      }
+      @keyframes hop {
+        0% { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      .animate-caret {
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
       }
     </style>
   </head>
@@ -49,403 +93,964 @@
     <div id="__next">
       <div class="h-full">
         <div class="flex min-h-screen flex-col">
-          <header
-            class="sticky top-0 z-50 border-b transition-colors duration-300 border-border bg-background/85 backdrop-blur-md"
-          >
-            <div
-              class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8"
-            >
-              <a
-                class="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background"
-                href="/"
-              >
-                <svg
-                  viewBox="0 0 32 32"
-                  aria-hidden="true"
-                  class="size-8 text-foreground transition-transform duration-300 group-hover:-rotate-6"
-                >
-                  <rect
-                    width="32"
-                    height="32"
-                    rx="7"
-                    fill="currentColor"
-                  ></rect>
-                  <path
-                    d="M8 22 L14 12 L19 18 L24 9"
-                    fill="none"
-                    stroke="#f6f3ec"
-                    stroke-width="2.2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
+          
+          <!-- Header -->
+          <header class="sticky top-0 z-50 border-b transition-colors duration-300 border-border bg-background/85 backdrop-blur-md">
+            <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:text-primary-foreground">Skip to content</a>
+            <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
+              <a class="group flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background" href="/">
+                <svg viewBox="0 0 32 32" aria-hidden="true" class="size-8 text-foreground transition-transform duration-300 group-hover:-rotate-6">
+                  <rect width="32" height="32" rx="7" fill="currentColor"></rect>
+                  <path d="M8 22 L14 12 L19 18 L24 9" fill="none" stroke="#f6f3ec" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
                   <circle cx="8" cy="22" r="2.6" fill="#f6f3ec"></circle>
                   <circle cx="14" cy="12" r="2.2" fill="#f6f3ec"></circle>
                   <circle cx="19" cy="18" r="2.2" fill="#f6f3ec"></circle>
                   <circle cx="24" cy="9" r="3" fill="#c2410c"></circle>
                 </svg>
-                <span
-                  class="font-heading text-[1.6rem] leading-none tracking-tight"
-                  >Moein Abbasi</span
-                >
+                <span class="font-heading text-[1.6rem] leading-none tracking-tight">Moein Abbasi</span>
               </a>
               <nav aria-label="Main" class="hidden md:block">
                 <ul class="flex items-center gap-1">
-                  <li>
-                    <a
-                      href="#about"
-                      class="relative rounded-full px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground"
-                      >About</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#experience"
-                      class="relative rounded-full px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground"
-                      >Experience</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#projects"
-                      class="relative rounded-full px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground"
-                      >Open source</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#writing"
-                      class="relative rounded-full px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground"
-                      >Writing</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="#contact"
-                      class="relative rounded-full px-3.5 py-2 text-sm text-muted-foreground hover:text-foreground"
-                      >Contact</a
-                    >
-                  </li>
+                  <li><a href="#about" class="relative rounded-full px-3.5 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal text-muted-foreground hover:text-foreground">About</a></li>
+                  <li><a href="#experience" class="relative rounded-full px-3.5 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal text-muted-foreground hover:text-foreground">Experience</a></li>
+                  <li><a href="#projects" class="relative rounded-full px-3.5 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal text-muted-foreground hover:text-foreground">Open source</a></li>
+                  <li><a href="#writing" class="relative rounded-full px-3.5 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal text-muted-foreground hover:text-foreground">Writing</a></li>
+                  <li><a href="#contact" class="relative rounded-full px-3.5 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal text-muted-foreground hover:text-foreground">Contact</a></li>
                 </ul>
               </nav>
               <div class="flex items-center gap-2">
-                <a
-                  href="#contact"
-                  class="items-center justify-center gap-2 rounded-full font-medium bg-foreground text-background hover:bg-foreground/90 h-9 px-3.5 text-sm hidden sm:inline-flex"
-                  >Get in touch</a
-                >
-                <button
-                  id="mobile-menu-btn"
-                  type="button"
-                  class="flex size-10 items-center justify-center rounded-full border border-foreground/15 text-foreground hover:bg-muted/40 md:hidden"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="size-5"
-                  >
-                    <line x1="4" x2="20" y1="12" y2="12"></line>
-                    <line x1="4" x2="20" y1="6" y2="6"></line>
-                    <line x1="4" x2="20" y1="18" y2="18"></line>
-                  </svg>
+                <a href="#contact" class="items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60 bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-3.5 text-sm hidden sm:inline-flex">Get in touch</a>
+                <button type="button" id="mobile-menu-btn" class="flex size-10 items-center justify-center rounded-full border border-foreground/15 text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu size-5"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
                 </button>
               </div>
             </div>
-            <nav
-              id="mobile-menu"
-              aria-label="Mobile"
-              class="border-t border-border hidden md:hidden"
-            >
-              <ul class="mx-auto flex flex-col px-5 py-3 sm:px-8">
-                <li>
-                  <a
-                    href="#about"
-                    class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg hover:bg-muted/40"
-                    ><span class="font-heading text-2xl">About</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#experience"
-                    class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg hover:bg-muted/40"
-                    ><span class="font-heading text-2xl">Experience</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#projects"
-                    class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg hover:bg-muted/40"
-                    ><span class="font-heading text-2xl">Open source</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#writing"
-                    class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg hover:bg-muted/40"
-                    ><span class="font-heading text-2xl">Writing</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#contact"
-                    class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg hover:bg-muted/40"
-                    ><span class="font-heading text-2xl">Contact</span></a
-                  >
-                </li>
+            
+            <!-- Mobile Menu -->
+            <nav id="mobile-menu" aria-label="Mobile" class="border-t border-border md:hidden hidden bg-background">
+              <ul class="mx-auto flex max-w-6xl flex-col px-5 py-3 sm:px-8">
+                <li><a href="#about" class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"><span class="font-heading text-2xl">About</span><span class="font-mono text-xs text-muted-foreground">01</span></a></li>
+                <li><a href="#experience" class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"><span class="font-heading text-2xl">Experience</span><span class="font-mono text-xs text-muted-foreground">02</span></a></li>
+                <li><a href="#projects" class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"><span class="font-heading text-2xl">Open source</span><span class="font-mono text-xs text-muted-foreground">03</span></a></li>
+                <li><a href="#writing" class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"><span class="font-heading text-2xl">Writing</span><span class="font-mono text-xs text-muted-foreground">04</span></a></li>
+                <li><a href="#contact" class="flex items-center justify-between rounded-lg px-2 py-3.5 text-lg transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal"><span class="font-heading text-2xl">Contact</span><span class="font-mono text-xs text-muted-foreground">05</span></a></li>
               </ul>
             </nav>
           </header>
 
           <main id="main" class="flex-1">
-            <section
-              id="hero"
-              class="relative isolate -mt-16 overflow-hidden pt-16"
-            >
-              <div
-                class="mx-auto grid max-w-6xl gap-16 px-5 pb-24 pt-14 sm:px-8 sm:pt-20 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pb-32 lg:pt-24"
-              >
+            <!-- Hero Section -->
+            <section id="hero" aria-labelledby="hero-title" class="relative isolate -mt-16 overflow-hidden pt-16">
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_80%_65%_at_50%_0%,black_35%,transparent_100%)]"></div>
+              <div aria-hidden="true" class="pointer-events-none absolute -top-48 right-[-12rem] -z-10 size-[38rem] rounded-full bg-signal/10 blur-3xl"></div>
+              
+              <div class="mx-auto grid max-w-6xl gap-16 px-5 pb-24 pt-14 sm:px-8 sm:pt-20 lg:grid-cols-12 lg:items-center lg:gap-12 lg:pb-32 lg:pt-24">
                 <div class="lg:col-span-6">
                   <div class="flex items-center gap-4">
-                    <!-- Replaced missing local image with your active CDN image -->
-                    <img
-                      src="https://moein-abbasi.cdn.modulify.website/images/moein-abbasi.jpg"
-                      alt="Portrait of Moein Abbasi"
-                      class="size-14 rounded-full object-cover shadow-md ring-2 ring-card"
-                    />
+                    <img src="https://moein-abbasi.cdn.modulify.website/images/moein-abbasi.jpg" alt="Portrait of Moein Abbasi" width="56" height="56" class="size-14 rounded-full object-cover shadow-md ring-2 ring-card">
                     <div>
-                      <p
-                        class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
-                      >
-                        DevOps &amp; software engineer
-                      </p>
-                      <p
-                        class="mt-1.5 flex items-center gap-1.5 text-sm text-muted-foreground"
-                      >
+                      <p class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">DevOps &amp; software engineer</p>
+                      <p class="mt-1.5 flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin size-4 text-signal" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
                         Based in Türkiye
                       </p>
                     </div>
                   </div>
-                  <h1
-                    class="mt-10 font-heading text-[4.5rem] leading-[0.88] tracking-tight sm:text-[6.5rem] lg:text-[7.25rem]"
-                  >
+                  <h1 id="hero-title" class="mt-10 font-heading text-[4.5rem] leading-[0.88] tracking-tight sm:text-[6.5rem] lg:text-[7.25rem]">
                     <span class="block">Moein</span>
                     <span class="block italic text-signal">Abbasi</span>
                   </h1>
-                  <p
-                    class="mt-8 max-w-xl text-xl leading-relaxed text-foreground/85 text-pretty sm:text-2xl"
-                  >
-                    I spent a decade building real-time messaging and
-                    distributed backends in Erlang, Elixir and Go. Now I run the
-                    infrastructure underneath: Kubernetes, GitOps and
-                    infrastructure as code.
+                  <p class="mt-8 max-w-xl text-xl leading-relaxed text-foreground/85 text-pretty sm:text-2xl sm:leading-relaxed">
+                    I spent a decade building real-time messaging and distributed backends in Erlang, Elixir and Go. Now I run the infrastructure underneath: Kubernetes, GitOps and infrastructure as code.
                   </p>
-                  <p class="mt-4 max-w-xl text-base text-muted-foreground">
-                    Currently DevOps Engineer at Simanban.
-                  </p>
+                  <p class="mt-4 max-w-xl text-base text-muted-foreground">Currently DevOps Engineer at Simanban.</p>
+                  
                   <div class="mt-10 flex flex-wrap items-center gap-3">
-                    <a
-                      class="inline-flex items-center justify-center gap-2 rounded-full font-medium bg-signal text-signal-foreground hover:bg-signal/90 h-12 px-6 text-base"
-                      href="#contact"
-                      >Get in touch</a
-                    >
-                    <a
-                      class="inline-flex items-center justify-center gap-2 rounded-full font-medium border border-foreground/15 bg-card/60 text-foreground hover:bg-card h-12 px-6 text-base"
-                      href="#writing"
-                      >Read my writing</a
-                    >
+                    <a class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background bg-signal text-signal-foreground shadow-sm shadow-signal/20 hover:bg-signal/90 h-12 px-6 text-base" href="#contact">
+                      Get in touch
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                    </a>
+                    <a class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background border border-foreground/15 bg-card/60 text-foreground hover:border-foreground/30 hover:bg-card h-12 px-6 text-base" href="#writing">
+                      Read my writing
+                    </a>
                   </div>
+                  
                   <ul class="flex items-center gap-2 mt-10">
                     <li>
-                      <a
-                        href="https://github.com/amoein"
-                        target="_blank"
-                        class="flex size-10 items-center justify-center rounded-full border border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal"
-                        >GitHub</a
-                      >
+                      <a href="https://github.com/amoein" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal focus-visible:ring-signal focus-visible:ring-offset-background">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github size-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                      </a>
                     </li>
                     <li>
-                      <a
-                        href="https://www.linkedin.com/in/amoein/"
-                        target="_blank"
-                        class="flex size-10 items-center justify-center rounded-full border border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal"
-                        >LinkedIn</a
-                      >
+                      <a href="https://www.linkedin.com/in/amoein/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal focus-visible:ring-signal focus-visible:ring-offset-background">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin size-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://medium.com/@amoein.devops" target="_blank" rel="noopener noreferrer" aria-label="Medium (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal focus-visible:ring-signal focus-visible:ring-offset-background">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-5"><ellipse cx="6.6" cy="12" rx="5.6" ry="5.7"></ellipse><ellipse cx="15.6" cy="12" rx="2.8" ry="5.35"></ellipse><ellipse cx="20.9" cy="12" rx="1.05" ry="4.8"></ellipse></svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:moein.abbasi@gmail.com" aria-label="Email" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-foreground/15 bg-card/60 text-foreground hover:border-signal hover:text-signal focus-visible:ring-signal focus-visible:ring-offset-background">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                      </a>
                     </li>
                   </ul>
                 </div>
+                
+                <!-- Terminal Window -->
                 <div class="lg:col-span-6">
                   <figure class="relative">
-                    <div
-                      class="overflow-hidden rounded-2xl border border-terminal-border bg-terminal text-terminal-foreground shadow-2xl"
-                    >
-                      <div
-                        class="flex items-center gap-2 border-b border-terminal-border px-4 py-3"
-                      >
-                        <span class="size-3 rounded-full bg-[#ff5f57]"></span>
-                        <span class="size-3 rounded-full bg-[#febc2e]"></span>
-                        <span class="size-3 rounded-full bg-[#28c840]"></span>
-                        <span class="ml-3 font-mono text-xs text-terminal-muted"
-                          >moein@abbasi: ~</span
-                        >
+                    <div aria-hidden="true" class="absolute -inset-3 -z-10 rounded-[1.75rem] bg-gradient-to-br from-signal/25 via-transparent to-foreground/10 blur-2xl"></div>
+                    <div class="overflow-hidden rounded-2xl border border-terminal-border bg-terminal text-terminal-foreground shadow-2xl shadow-foreground/15">
+                      <div class="flex items-center gap-2 border-b border-terminal-border px-4 py-3">
+                        <span aria-hidden="true" class="size-3 rounded-full bg-[#ff5f57]"></span>
+                        <span aria-hidden="true" class="size-3 rounded-full bg-[#febc2e]"></span>
+                        <span aria-hidden="true" class="size-3 rounded-full bg-[#28c840]"></span>
+                        <span class="ml-3 font-mono text-xs text-terminal-muted">moein@abbasi: ~</span>
                       </div>
-                      <div
-                        class="px-5 py-6 font-mono text-[12.5px] leading-relaxed sm:px-6"
-                      >
-                        <p>
-                          <span class="text-terminal-accent">$ </span>traceroute
-                          moein-abbasi
-                        </p>
-                        <ol class="mt-4 space-y-2.5">
-                          <li
-                            class="grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]"
-                          >
-                            <span class="text-terminal-muted">1</span
-                            ><span class="truncate">yara</span
-                            ><span class="text-terminal-muted">2015</span
-                            ><span class="text-terminal-muted"
-                              >C# and ASP.NET MVC</span
-                            >
+                      <div class="px-5 py-6 font-mono text-[12.5px] leading-relaxed sm:px-6 sm:text-[13px]">
+                        <p><span aria-hidden="true" class="text-terminal-accent">$ </span>traceroute moein-abbasi</p>
+                        <p class="text-terminal-muted">traceroute to moein-abbasi, 9 hops max</p>
+                        <ol class="mt-4 space-y-2.5 sm:space-y-1.5">
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:250ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">1</span><span class="truncate">yara</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2015</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">C# and ASP.NET MVC</span>
                           </li>
-                          <li
-                            class="grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]"
-                          >
-                            <span class="text-terminal-muted">4</span
-                            ><span class="truncate">bisphone</span
-                            ><span class="text-terminal-muted">2017</span
-                            ><span class="text-terminal-muted"
-                              >Erlang messenger</span
-                            >
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:380ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">2</span><span class="truncate">exon-vision</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2015</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">C# microservices</span>
                           </li>
-                          <li
-                            class="grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]"
-                          >
-                            <span class="text-terminal-muted">9</span
-                            ><span class="truncate text-terminal-accent"
-                              >simanban</span
-                            ><span class="text-terminal-muted">now</span
-                            ><span class="text-terminal-muted"
-                              >DevOps engineer</span
-                            >
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:510ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">3</span><span class="truncate">aypan</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2016</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">Go and MongoDB</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:640ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">4</span><span class="truncate">bisphone</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2017</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">Erlang messenger</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:770ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">5</span><span class="truncate">pars-telecom</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2018</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">Ejabberd, Cassandra</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:900ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">6</span><span class="truncate">clubcollect</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2018</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">Elixir fintech</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:1030ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">7</span><span class="truncate">hubber</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2020</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">Phoenix chat</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:1160ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">8</span><span class="truncate">marko</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">2022</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">LiveView dashboards</span>
+                          </li>
+                          <li class="animate-hop grid grid-cols-[1.5rem_1fr_auto] gap-x-3 sm:grid-cols-[1.5rem_8.5rem_2.75rem_1fr]" style="animation-delay:1290ms">
+                            <span aria-hidden="true" class="tabular-nums text-terminal-muted">9</span><span class="truncate text-terminal-accent">simanban</span><span class="text-right tabular-nums text-terminal-muted sm:text-left">now</span><span class="col-span-2 col-start-2 text-terminal-muted sm:col-span-1 sm:col-start-auto">DevOps engineer</span>
                           </li>
                         </ol>
+                        <p class="animate-hop mt-5 text-terminal-muted" style="animation-delay:1420ms">reached in 9 hops, 0 packets lost</p>
+                        <p class="mt-1" aria-hidden="true"><span class="text-terminal-accent">$ </span><span class="animate-caret inline-block h-4 w-2 translate-y-[3px] bg-terminal-foreground"></span></p>
                       </div>
                     </div>
+                    <figcaption class="sr-only">My career so far, written as a network traceroute: from C# work at Yara in 2015, through Go, Erlang and Elixir roles, to DevOps at Simanban today.</figcaption>
                   </figure>
                 </div>
               </div>
             </section>
 
-            <section id="about" class="border-t border-border py-24 sm:py-32">
+            <!-- About Section -->
+            <section id="about" aria-labelledby="about-title" class="scroll-mt-16 border-t border-border py-24 sm:py-32">
               <div class="mx-auto max-w-6xl px-5 sm:px-8">
                 <div class="max-w-3xl">
-                  <p
-                    class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
-                  >
-                    <span class="text-signal">01</span><span>About</span>
+                  <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    <span class="text-signal">01</span><span aria-hidden="true" class="h-px w-8 bg-border"></span><span>About</span>
                   </p>
-                  <h2
-                    class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl"
-                  >
-                    From the BEAM to the
-                    <span class="italic">Linux kernel</span>.
+                  <h2 id="about-title" class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                    From the BEAM to the <span class="italic">Linux kernel</span>.
                   </h2>
                 </div>
+                
                 <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
-                  <div
-                    class="space-y-6 text-lg leading-relaxed text-foreground/85 lg:col-span-7"
-                  >
-                    <p>
-                      I'm a software engineer with more than a decade of
-                      building backends, most of it on real-time messaging and
-                      distributed systems. I started on the Microsoft stack with
-                      C# and ASP.NET, worked with Go and Node.js, then spent
-                      five years on the BEAM writing Erlang and Elixir.
-                    </p>
-                    <p>
-                      Today I work as a DevOps engineer at Simanban. I run CI/CD
-                      and Kubernetes clusters, practice GitOps with ArgoCD,
-                      provision virtual machines on Proxmox and VMware with
-                      Terraform and Ansible, and keep an eye on everything with
-                      Prometheus and the ELK stack.
-                    </p>
+                  <div class="space-y-6 text-lg leading-relaxed text-foreground/85 text-pretty lg:col-span-7">
+                    <p>I'm a software engineer with more than a decade of building backends, most of it on real-time messaging and distributed systems. I started on the Microsoft stack with C# and ASP.NET, worked with Go and Node.js, then spent five years on the BEAM writing Erlang and Elixir.</p>
+                    <p>At BisPhone and Pars Telecom I worked on messengers serving large numbers of live, concurrent connections with Erlang, Ejabberd and Cassandra. Remote Elixir work followed: OQTO, a platform linking partners to the finance engine at ClubCollect, the chat platform behind hubber.live, and real-time LiveView dashboards at Marko.</p>
+                    <p>Today I work as a DevOps engineer at Simanban. I run CI/CD and Kubernetes clusters, practice GitOps with ArgoCD, provision virtual machines on Proxmox and VMware with Terraform and Ansible, and keep an eye on everything with Prometheus and the ELK stack. I write up what I learn as practical guides.</p>
+                    <p>I hold a master's and a bachelor's in software engineering, and alongside my day job I've mentored early-stage teams at Sharif Accelerator and Avatech.</p>
                   </div>
+                  
+                  <dl class="grid grid-cols-1 gap-px self-start overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:col-span-5">
+                    <div class="flex flex-col-reverse gap-3 bg-card p-6">
+                      <dt class="text-sm leading-snug text-muted-foreground">Building backends and distributed systems</dt>
+                      <dd class="font-heading text-4xl leading-none tracking-tight lg:text-3xl xl:text-4xl">10+ yrs</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-3 bg-card p-6">
+                      <dt class="text-sm leading-snug text-muted-foreground">Writing Erlang and Elixir in production</dt>
+                      <dd class="font-heading text-4xl leading-none tracking-tight lg:text-3xl xl:text-4xl">Since 2017</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-3 bg-card p-6">
+                      <dt class="text-sm leading-snug text-muted-foreground">Open source projects for Erlang/OTP and Elixir</dt>
+                      <dd class="font-heading text-4xl leading-none tracking-tight lg:text-3xl xl:text-4xl">4</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-3 bg-card p-6">
+                      <dt class="text-sm leading-snug text-muted-foreground">Certified Professional DevOps Engineer, Arvan Academy</dt>
+                      <dd class="font-heading text-4xl leading-none tracking-tight lg:text-3xl xl:text-4xl">2026</dd>
+                    </div>
+                  </dl>
                 </div>
-
+                
                 <div class="mt-20">
-                  <h3
-                    class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"
-                  >
-                    Toolbox
-                  </h3>
-                  <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <h3 id="toolbox-title" class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Toolbox</h3>
+                  <ul aria-labelledby="toolbox-title" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     <li class="rounded-2xl border border-border bg-card p-6">
                       <h4 class="text-sm font-semibold">Orchestration</h4>
                       <ul class="mt-4 flex flex-wrap gap-2">
-                        <li
-                          class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs"
-                        >
-                          Kubernetes
-                        </li>
-                        <li
-                          class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs"
-                        >
-                          Helm
-                        </li>
-                        <li
-                          class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs"
-                        >
-                          VMware ESXi
-                        </li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Kubernetes</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Kubespray</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Helm</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Docker</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">containerd</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Proxmox VE</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">VMware ESXi</li>
+                      </ul>
+                    </li>
+                    <li class="rounded-2xl border border-border bg-card p-6">
+                      <h4 class="text-sm font-semibold">CI/CD &amp; GitOps</h4>
+                      <ul class="mt-4 flex flex-wrap gap-2">
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">GitLab CI</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">GitHub Actions</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">ArgoCD</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Harbor</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Nexus</li>
+                      </ul>
+                    </li>
+                    <li class="rounded-2xl border border-border bg-card p-6">
+                      <h4 class="text-sm font-semibold">Infrastructure as code</h4>
+                      <ul class="mt-4 flex flex-wrap gap-2">
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Terraform</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Ansible</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Packer</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Bash</li>
+                      </ul>
+                    </li>
+                    <li class="rounded-2xl border border-border bg-card p-6">
+                      <h4 class="text-sm font-semibold">Networking &amp; observability</h4>
+                      <ul class="mt-4 flex flex-wrap gap-2">
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Cilium</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Traefik</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Nginx</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">HAProxy</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Keepalived</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Prometheus</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">ELK Stack</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Zabbix</li>
+                      </ul>
+                    </li>
+                    <li class="rounded-2xl border border-border bg-card p-6">
+                      <h4 class="text-sm font-semibold">Data &amp; storage</h4>
+                      <ul class="mt-4 flex flex-wrap gap-2">
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">PostgreSQL</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Cassandra</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">MongoDB</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Redis</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">MySQL</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">TrueNAS</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Longhorn</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">MinIO</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">RustFS</li>
+                      </ul>
+                    </li>
+                    <li class="rounded-2xl border border-border bg-card p-6">
+                      <h4 class="text-sm font-semibold">Languages &amp; backends</h4>
+                      <ul class="mt-4 flex flex-wrap gap-2">
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Erlang/OTP</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Elixir</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Phoenix LiveView</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Ejabberd</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">Go</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">C#</li>
+                        <li class="rounded-md border border-border bg-background px-2.5 py-1 font-mono text-xs text-foreground/80">RabbitMQ</li>
                       </ul>
                     </li>
                   </ul>
                 </div>
               </div>
             </section>
-          </main>
 
-          <footer
-            class="border-t border-terminal-border bg-terminal text-terminal-foreground"
-          >
-            <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-              <div
-                class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between"
-              >
-                <div class="max-w-sm">
-                  <span
-                    class="font-heading text-[1.6rem] leading-none tracking-tight"
-                    >Moein Abbasi</span
-                  >
-                  <p class="mt-4 text-sm leading-relaxed text-terminal-muted">
-                    DevOps &amp; software engineer, based in Türkiye.
+            <!-- Experience Section -->
+            <section id="experience" aria-labelledby="experience-title" class="scroll-mt-16 border-t border-border bg-muted/40 py-24 sm:py-32">
+              <div class="mx-auto max-w-6xl px-5 sm:px-8">
+                <div class="max-w-3xl">
+                  <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                    <span class="text-signal">02</span><span aria-hidden="true" class="h-px w-8 bg-border"></span><span>Experience</span>
+                  </p>
+                  <h2 id="experience-title" class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                    From messaging backends to <span class="italic">the platforms under them</span>.
+                  </h2>
+                  <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
+                    Real-time messengers in Erlang, fintech and chat in Elixir, and now Kubernetes, GitOps and infrastructure as code.
                   </p>
                 </div>
+                
+                <div class="mt-16 grid gap-14 lg:grid-cols-12 lg:gap-16">
+                  <!-- Work Timeline -->
+                  <div class="lg:col-span-7">
+                    <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Work</h3>
+                    <ol class="relative mt-6 space-y-6 before:absolute before:bottom-8 before:left-[5px] before:top-8 before:w-px before:bg-border">
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-signal bg-signal ring-4 ring-signal/15"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">Simanban</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-signal">Mar 2026 to present</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">DevOps Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Full-time</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Run CI/CD pipelines and infrastructure across development, staging and production.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Provision and maintain virtual machines on Proxmox and VMware with Terraform and Ansible.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Administer Kubernetes clusters, deploy applications with Helm charts and scale them with HPA.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Run GitOps with ArgoCD and maintain the Harbor and Nexus container registries.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Manage storage on TrueNAS, Longhorn and MinIO, with monitoring and logs in Prometheus and the ELK stack.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at Simanban" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Kubernetes</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Helm</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">ArgoCD</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Terraform</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Ansible</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Proxmox</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Harbor</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Prometheus</li>
+                          </ul>
+                          <a href="https://simanban.ir" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex items-center gap-1 text-sm font-medium text-signal underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">simanban.ir<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg><span class="sr-only">(opens in a new tab)</span></a>
+                        </article>
+                      </li>
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">Marko</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">Jan 2022 to Dec 2022</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">Software Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Full-time<span aria-hidden="true"> · </span><span class="sr-only">, </span>Remote, Switzerland</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Built a centralized logging system to monitor application events.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Built interactive Phoenix LiveView dashboards that show real-time system metrics to the operations team.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at Marko" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Elixir</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Phoenix LiveView</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">PostgreSQL</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Tailwind CSS</li>
+                          </ul>
+                        </article>
+                      </li>
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">Hubber</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">Aug 2020 to Dec 2021</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">Software Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Part-time<span aria-hidden="true"> · </span><span class="sr-only">, </span>Remote, Istanbul</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Maintained and optimized the chat platform behind hubber.live.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Improved performance and response times by tuning database queries and Phoenix Channels.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at Hubber" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Elixir</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Phoenix Channels</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Phoenix PubSub</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">LiveView</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">PostgreSQL</li>
+                          </ul>
+                        </article>
+                      </li>
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">ClubCollect</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">Oct 2018 to Feb 2020</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">Software Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Full-time<span aria-hidden="true"> · </span><span class="sr-only">, </span>Remote, Amsterdam</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Lead developer of OQTO, a multi-connection platform linking third-party partners to the core finance engine.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Kept data flowing reliably and connections stable for financial transactions.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at ClubCollect" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Elixir</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Phoenix</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Phoenix PubSub</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">PostgreSQL</li>
+                          </ul>
+                        </article>
+                      </li>
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">Pars Telecom</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">Apr 2018 to Apr 2019</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">Software Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Contract<span aria-hidden="true"> · </span><span class="sr-only">, </span>Iran</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Helped build the microservice architecture that manages messaging traffic for the Navaphone messenger.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Configured and maintained Ejabberd servers to scale real-time communication.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at Pars Telecom" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Erlang</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Ejabberd</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Cassandra</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Microservices</li>
+                          </ul>
+                        </article>
+                      </li>
+                      
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <article class="rounded-2xl border border-border bg-card p-6 sm:p-8">
+                          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+                            <h4 class="font-heading text-3xl leading-tight sm:text-4xl">BisPhone</h4>
+                            <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground">Aug 2017 to Jul 2018</p>
+                          </div>
+                          <p class="mt-1.5 text-sm text-muted-foreground"><span class="font-medium text-foreground">Software Engineer</span><span aria-hidden="true"> · </span><span class="sr-only">, </span>Full-time<span aria-hidden="true"> · </span><span class="sr-only">, </span>Tehran, Iran</p>
+                          <ul class="mt-5 space-y-2.5">
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Worked on the core of a messenger handling high volumes of live, concurrent connections.</span></li>
+                            <li class="flex gap-3 leading-relaxed text-foreground/80 text-pretty"><span aria-hidden="true" class="mt-[0.7em] h-px w-3 shrink-0 bg-signal"></span><span>Optimized database access on single nodes and helped design the distributed system architecture.</span></li>
+                          </ul>
+                          <ul aria-label="Tools used at BisPhone" class="mt-6 flex flex-wrap gap-1.5">
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Erlang</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Cassandra</li>
+                            <li class="rounded-md border border-border bg-background px-2 py-0.5 font-mono text-[11px] text-foreground/75">Distributed systems</li>
+                          </ul>
+                        </article>
+                      </li>
+                      
+                      <!-- Earlier Work -->
+                      <li class="relative pl-9">
+                        <span aria-hidden="true" class="absolute left-0 top-8 size-[11px] rounded-full border-2 border-foreground/30 bg-background"></span>
+                        <div class="rounded-2xl border border-dashed border-foreground/15 bg-card/60 p-6 sm:p-8">
+                          <h4 class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Earlier</h4>
+                          <ul class="mt-4 divide-y divide-border">
+                            <li class="flex flex-col gap-1 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                              <div>
+                                <p class="font-medium">Aypan</p>
+                                <p class="mt-0.5 text-sm text-muted-foreground">Software Engineer<span aria-hidden="true"> · </span><span class="sr-only">, </span>Go, Node.js, MongoDB</p>
+                              </div>
+                              <p class="shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground">2016 to 2018</p>
+                            </li>
+                            <li class="flex flex-col gap-1 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                              <div>
+                                <p class="font-medium">Narin</p>
+                                <p class="mt-0.5 text-sm text-muted-foreground">Software Consultant<span aria-hidden="true"> · </span><span class="sr-only">, </span>Node.js, MySQL</p>
+                              </div>
+                              <p class="shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground">2016 to 2018</p>
+                            </li>
+                            <li class="flex flex-col gap-1 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                              <div>
+                                <p class="font-medium">Exon Vision System</p>
+                                <p class="mt-0.5 text-sm text-muted-foreground">Software Engineer<span aria-hidden="true"> · </span><span class="sr-only">, </span>C#, ASP.NET, MongoDB, MSSQL</p>
+                              </div>
+                              <p class="shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground">2015 to 2016</p>
+                            </li>
+                            <li class="flex flex-col gap-1 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+                              <div>
+                                <p class="font-medium">Yara Information Technology</p>
+                                <p class="mt-0.5 text-sm text-muted-foreground">Software Developer<span aria-hidden="true"> · </span><span class="sr-only">, </span>C#, ASP.NET MVC, MSSQL</p>
+                              </div>
+                              <p class="shrink-0 font-mono text-xs uppercase tracking-wider text-muted-foreground">2015</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                      
+                    </ol>
+                  </div>
+                  
+                  <!-- Sidebar (Edu, Certs, Mentoring) -->
+                  <div class="space-y-12 lg:col-span-5">
+                    
+                    <div>
+                      <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Education</h3>
+                      <ul class="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+                        <li class="flex gap-4 p-5 sm:p-6">
+                          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap size-5" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                          </span>
+                          <div>
+                            <p class="font-semibold">M.Sc., Software Engineering</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Qazvin Islamic Azad University</p>
+                            <p class="mt-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">2013 to 2015</p>
+                          </div>
+                        </li>
+                        <li class="flex gap-4 p-5 sm:p-6">
+                          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap size-5" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                          </span>
+                          <div>
+                            <p class="font-semibold">B.Sc., Software Engineering</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Semnan University</p>
+                            <p class="mt-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">2008 to 2012</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Certifications</h3>
+                      <ul class="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+                        <li class="flex items-start gap-4 p-5 sm:p-6">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check mt-0.5 size-5 shrink-0 text-signal" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                          <div class="min-w-0 flex-1">
+                            <p class="font-medium leading-snug">Professional DevOps Engineer</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Arvan Academy<span aria-hidden="true"> · </span><span class="sr-only">, issued </span>Jul 2026</p>
+                            <p class="mt-1.5 font-mono text-xs text-muted-foreground">Credential ID 8667</p>
+                          </div>
+                          <a href="https://academy.arvancloud.ir/certificate/12D6425A0-12D463F5C-1277DFD3F/" target="_blank" rel="noopener noreferrer" class="flex size-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-signal hover:text-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                            <span class="sr-only">View credential (opens in a new tab)</span>
+                          </a>
+                        </li>
+                        <li class="flex items-start gap-4 p-5 sm:p-6">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check mt-0.5 size-5 shrink-0 text-signal" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                          <div class="min-w-0 flex-1">
+                            <p class="font-medium leading-snug">Associate DevOps Engineer</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Arvan Academy<span aria-hidden="true"> · </span><span class="sr-only">, issued </span>Jul 2026</p>
+                            <p class="mt-1.5 font-mono text-xs text-muted-foreground">Credential ID 6893</p>
+                          </div>
+                          <a href="https://academy.arvancloud.ir/certificate/12D45F00E-12CEB26A1-1277DFD3F/" target="_blank" rel="noopener noreferrer" class="flex size-9 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-signal hover:text-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                            <span class="sr-only">View credential (opens in a new tab)</span>
+                          </a>
+                        </li>
+                        <li class="flex items-start gap-4 p-5 sm:p-6">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check mt-0.5 size-5 shrink-0 text-signal" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                          <div class="min-w-0 flex-1">
+                            <p class="font-medium leading-snug">Secure Development</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Raspina Net Pars<span aria-hidden="true"> · </span><span class="sr-only">, issued </span>2017</p>
+                            <p class="mt-1.5 text-sm text-muted-foreground">SANS courses DEV522, DEV544, SEC540, SEC542 and SEC550</p>
+                          </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-5 sm:p-6">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check mt-0.5 size-5 shrink-0 text-signal" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                          <div class="min-w-0 flex-1">
+                            <p class="font-medium leading-snug">Microsoft Certified Professional Developer</p>
+                            <p class="mt-1 text-sm text-muted-foreground">sematec<span aria-hidden="true"> · </span><span class="sr-only">, issued </span>Oct 2013</p>
+                            <p class="mt-1.5 text-sm text-muted-foreground">ASP.NET MVC</p>
+                          </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-5 sm:p-6">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check mt-0.5 size-5 shrink-0 text-signal" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+                          <div class="min-w-0 flex-1">
+                            <p class="font-medium leading-snug">Microsoft Certified IT Professional (MCITP)</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Tehran Institute of Technology<span aria-hidden="true"> · </span><span class="sr-only">, issued </span>Jan 2011</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h3 class="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">Mentoring</h3>
+                      <ul class="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
+                        <li class="flex gap-4 p-5 sm:p-6">
+                          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-5" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                          </span>
+                          <div>
+                            <p class="font-semibold">Sharif Accelerator</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Development mentor<span aria-hidden="true"> · </span><span class="sr-only">, </span>Since 2015</p>
+                            <p class="mt-1.5 text-sm text-muted-foreground">Worked with startups such as Hampa, Carvano and Jahaz.</p>
+                          </div>
+                        </li>
+                        <li class="flex gap-4 p-5 sm:p-6">
+                          <span class="flex size-10 shrink-0 items-center justify-center rounded-full bg-signal/10 text-signal">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users size-5" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                          </span>
+                          <div>
+                            <p class="font-semibold">Avatech</p>
+                            <p class="mt-1 text-sm text-muted-foreground">Development mentor<span aria-hidden="true"> · </span><span class="sr-only">, </span>2018 to 2020</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+                </div>
               </div>
-              <div
-                class="mt-12 border-t border-terminal-border pt-6 text-xs text-terminal-muted"
-              >
+            </section>
+
+            <!-- Open Source Section -->
+            <section id="projects" aria-labelledby="projects-title" class="scroll-mt-16 border-t border-border py-24 sm:py-32">
+              <div class="mx-auto max-w-6xl px-5 sm:px-8">
+                <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+                  <div class="max-w-3xl">
+                    <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                      <span class="text-signal">03</span><span aria-hidden="true" class="h-px w-8 bg-border"></span><span>Open source</span>
+                    </p>
+                    <h2 id="projects-title" class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                      Small, sharp tools for <span class="italic">concurrent systems</span>.
+                    </h2>
+                    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
+                      Libraries and experiments for the BEAM, the virtual machine behind Erlang and Elixir.
+                    </p>
+                  </div>
+                  <a class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-60 border border-foreground/15 bg-card/60 text-foreground hover:border-foreground/30 hover:bg-card h-11 px-5 text-sm shrink-0 self-start md:self-auto" href="https://github.com/amoein" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github size-4" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    All repositories
+                  </a>
+                </div>
+                
+                <ul class="mt-14 grid gap-5 md:grid-cols-2">
+                  <li>
+                    <article class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-foreground/5 sm:p-8">
+                      <div class="flex items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
+                        <span>amoein/<span class="text-foreground">cessna</span></span><span>2019</span>
+                      </div>
+                      <h3 class="mt-8 font-heading text-4xl capitalize leading-none tracking-tight sm:text-5xl">cessna</h3>
+                      <p class="mt-3 text-sm font-medium text-signal">Erlang socket acceptor</p>
+                      <p class="mt-4 flex-1 leading-relaxed text-muted-foreground text-pretty">A lightweight TCP acceptor pool for Erlang/OTP. Built for servers that hold live connections, like chat or AMQP, and must survive a flood of simultaneous reconnects after a restart or deploy.</p>
+                      <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+                        <span class="inline-flex items-center gap-2 text-sm"><span aria-hidden="true" class="size-2.5 rounded-full bg-[#a90533]"></span>Erlang</span>
+                        <div class="flex items-center gap-5 text-sm font-medium">
+                          <a href="https://github.com/amoein/cessna_example" target="_blank" rel="noopener noreferrer" class="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">Example</a>
+                          <a href="https://github.com/amoein/cessna" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-foreground underline-offset-4 transition-colors hover:text-signal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            Source<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <li>
+                    <article class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-foreground/5 sm:p-8">
+                      <div class="flex items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
+                        <span>amoein/<span class="text-foreground">linn</span></span><span>2019</span>
+                      </div>
+                      <h3 class="mt-8 font-heading text-4xl capitalize leading-none tracking-tight sm:text-5xl">linn</h3>
+                      <p class="mt-3 text-sm font-medium text-signal">Erlang ring buffer and process pool</p>
+                      <p class="mt-4 flex-1 leading-relaxed text-muted-foreground text-pretty">A process pool manager for Erlang/OTP. It keeps a pool of processes instead of connections, spreads requests across them and handles back pressure, which makes it a good fit for IO-bound work.</p>
+                      <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+                        <span class="inline-flex items-center gap-2 text-sm"><span aria-hidden="true" class="size-2.5 rounded-full bg-[#a90533]"></span>Erlang</span>
+                        <div class="flex items-center gap-5 text-sm font-medium">
+                          <a href="https://github.com/amoein/linn_example" target="_blank" rel="noopener noreferrer" class="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">Example</a>
+                          <a href="https://github.com/amoein/linn" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-foreground underline-offset-4 transition-colors hover:text-signal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            Source<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <li>
+                    <article class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-foreground/5 sm:p-8">
+                      <div class="flex items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
+                        <span>amoein/<span class="text-foreground">elf</span></span><span>2023</span>
+                      </div>
+                      <h3 class="mt-8 font-heading text-4xl capitalize leading-none tracking-tight sm:text-5xl">elf</h3>
+                      <p class="mt-3 text-sm font-medium text-signal">Efficient unique sorted IDs</p>
+                      <p class="mt-4 flex-1 leading-relaxed text-muted-foreground text-pretty">A small Erlang library for generating IDs that are unique and sortable.</p>
+                      <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+                        <span class="inline-flex items-center gap-2 text-sm"><span aria-hidden="true" class="size-2.5 rounded-full bg-[#a90533]"></span>Erlang</span>
+                        <div class="flex items-center gap-5 text-sm font-medium">
+                          <a href="https://github.com/amoein/elf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-foreground underline-offset-4 transition-colors hover:text-signal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            Source<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <li>
+                    <article class="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition duration-300 hover:-translate-y-1 hover:border-foreground/20 hover:shadow-xl hover:shadow-foreground/5 sm:p-8">
+                      <div class="flex items-center justify-between gap-4 font-mono text-xs text-muted-foreground">
+                        <span>amoein/<span class="text-foreground">balloon</span></span><span>2023</span>
+                      </div>
+                      <h3 class="mt-8 font-heading text-4xl capitalize leading-none tracking-tight sm:text-5xl">balloon</h3>
+                      <p class="mt-3 text-sm font-medium text-signal">Minimal video streaming</p>
+                      <p class="mt-4 flex-1 leading-relaxed text-muted-foreground text-pretty">A minimal video streaming experiment built with Elixir and Phoenix LiveView.</p>
+                      <div class="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5">
+                        <span class="inline-flex items-center gap-2 text-sm"><span aria-hidden="true" class="size-2.5 rounded-full bg-[#6e4a7e]"></span>Elixir</span>
+                        <div class="flex items-center gap-5 text-sm font-medium">
+                          <a href="https://github.com/amoein/balloon" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-foreground underline-offset-4 transition-colors hover:text-signal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                            Source<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-4" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                          </a>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Writing Section -->
+            <section id="writing" aria-labelledby="writing-title" class="scroll-mt-16 border-t border-border bg-muted/40 py-24 sm:py-32">
+              <div class="mx-auto max-w-6xl px-5 sm:px-8">
+                <div class="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+                  <div class="max-w-3xl">
+                    <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                      <span class="text-signal">04</span><span aria-hidden="true" class="h-px w-8 bg-border"></span><span>Writing</span>
+                    </p>
+                    <h2 id="writing-title" class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                      Practical guides from <span class="italic">real systems</span>.
+                    </h2>
+                    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground">
+                      Long-form notes on Kubernetes networking, container registries and CI, written from hands-on experience.
+                    </p>
+                  </div>
+                  <div class="flex shrink-0 flex-wrap items-center gap-3">
+                    <a class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background border border-foreground/15 bg-card/60 text-foreground hover:border-foreground/30 hover:bg-card h-11 px-5 text-sm" href="https://medium.com/@amoein.devops" target="_blank" rel="noopener noreferrer">
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-4"><ellipse cx="6.6" cy="12" rx="5.6" ry="5.7"></ellipse><ellipse cx="15.6" cy="12" rx="2.8" ry="5.35"></ellipse><ellipse cx="20.9" cy="12" rx="1.05" ry="4.8"></ellipse></svg>
+                      Follow on Medium
+                    </a>
+                    <a href="https://medium.com/feed/@amoein.devops" target="_blank" rel="noopener noreferrer" class="flex size-11 items-center justify-center rounded-full border border-foreground/15 bg-card/60 text-foreground transition-colors hover:border-signal hover:text-signal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rss size-4" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                      <span class="sr-only">Subscribe via RSS (opens in a new tab)</span>
+                    </a>
+                  </div>
+                </div>
+                
+                <ul class="mt-14 border-t border-border">
+                  <li class="border-b border-border">
+                    <a href="https://medium.com/@amoein.devops/demystifying-kubernetes-networking-from-the-linux-kernel-to-bgp-and-ebpf-4b9d99805a90" target="_blank" rel="noopener noreferrer" class="group grid gap-4 py-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background md:grid-cols-12 md:gap-8">
+                      <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground md:col-span-3 md:pt-2">
+                        <time datetime="2026-05-31T16:53:50.000Z">May 31, 2026</time><span class="mt-1 block">6 min read</span>
+                      </p>
+                      <div class="md:col-span-8">
+                        <h3 class="font-heading text-3xl leading-[1.1] tracking-tight text-balance transition-colors group-hover:text-signal sm:text-4xl">Demystifying Kubernetes Networking: From the Linux Kernel to BGP and eBPF</h3>
+                        <p class="mt-4 line-clamp-3 leading-relaxed text-muted-foreground text-pretty">Kubernetes doesn't actually do networking: it orchestrates the Linux kernel and the datacenter underneath. Follow a packet from application code through namespaces, veth pairs and bridges to the VXLAN, BGP and eBPF approaches behind CNI plugins.</p>
+                        <ul class="mt-5 flex flex-wrap gap-2">
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">kubernetes</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">network</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">devops</li>
+                        </ul>
+                      </div>
+                      <div aria-hidden="true" class="hidden md:col-span-1 md:flex md:justify-end md:pt-2">
+                        <span class="flex size-11 items-center justify-center rounded-full border border-border bg-card transition duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-foreground">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="border-b border-border">
+                    <a href="https://medium.com/@amoein.devops/harbor-backup-restore-migration-a-battle-tested-guide-a56546f6f6fe" target="_blank" rel="noopener noreferrer" class="group grid gap-4 py-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background md:grid-cols-12 md:gap-8">
+                      <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground md:col-span-3 md:pt-2">
+                        <time datetime="2026-05-31T07:38:14.000Z">May 31, 2026</time><span class="mt-1 block">7 min read</span>
+                      </p>
+                      <div class="md:col-span-8">
+                        <h3 class="font-heading text-3xl leading-[1.1] tracking-tight text-balance transition-colors group-hover:text-signal sm:text-4xl">Harbor Backup, Restore &amp; Migration: A Battle-Tested Guide</h3>
+                        <p class="mt-4 line-clamp-3 leading-relaxed text-muted-foreground text-pretty">Every pitfall in this guide was actually hit. What Harbor really stores, the secret keys you can't afford to lose, why you never restore into an initialized schema, and a step-by-step procedure for backups, restores and migrations.</p>
+                        <ul class="mt-5 flex flex-wrap gap-2">
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">devops</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">data backup</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">harbor</li>
+                        </ul>
+                      </div>
+                      <div aria-hidden="true" class="hidden md:col-span-1 md:flex md:justify-end md:pt-2">
+                        <span class="flex size-11 items-center justify-center rounded-full border border-border bg-card transition duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-foreground">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                  <li class="border-b border-border">
+                    <a href="https://medium.com/@amoein.devops/how-to-use-self-hosted-gitea-as-ci-for-your-go-project-bdec2480691d" target="_blank" rel="noopener noreferrer" class="group grid gap-4 py-9 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-4 focus-visible:ring-offset-background md:grid-cols-12 md:gap-8">
+                      <p class="font-mono text-xs uppercase tracking-wider text-muted-foreground md:col-span-3 md:pt-2">
+                        <time datetime="2026-05-30T10:46:57.000Z">May 30, 2026</time><span class="mt-1 block">8 min read</span>
+                      </p>
+                      <div class="md:col-span-8">
+                        <h3 class="font-heading text-3xl leading-[1.1] tracking-tight text-balance transition-colors group-hover:text-signal sm:text-4xl">How to Use Self-Hosted Gitea as CI for Your Go Project</h3>
+                        <p class="mt-4 line-clamp-3 leading-relaxed text-muted-foreground text-pretty">Push to main and let your own server pull the code, build a Docker image and push it to a private registry. Runners, Docker-in-Docker, secrets, caching and the mistakes that cost the most time.</p>
+                        <ul class="mt-5 flex flex-wrap gap-2">
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">gitea</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">devops</li>
+                          <li class="rounded-full border border-border bg-card px-3 py-1 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">github</li>
+                        </ul>
+                      </div>
+                      <div aria-hidden="true" class="hidden md:col-span-1 md:flex md:justify-end md:pt-2">
+                        <span class="flex size-11 items-center justify-center rounded-full border border-border bg-card transition duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-foreground">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" aria-labelledby="contact-title" class="relative isolate scroll-mt-16 overflow-hidden bg-terminal py-24 text-terminal-foreground sm:py-32">
+              <div aria-hidden="true" class="pointer-events-none absolute -bottom-56 -left-40 -z-10 size-[34rem] rounded-full bg-signal/20 blur-3xl"></div>
+              
+              <div class="mx-auto grid max-w-6xl gap-14 px-5 sm:px-8 lg:grid-cols-12 lg:gap-16">
+                <div class="lg:col-span-5">
+                  <div class="max-w-3xl">
+                    <p class="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-terminal-muted">
+                      <span class="text-terminal-accent">05</span><span aria-hidden="true" class="h-px w-8 bg-terminal-border"></span><span>Contact</span>
+                    </p>
+                    <h2 id="contact-title" class="mt-5 font-heading text-4xl leading-[1.05] tracking-tight text-balance sm:text-5xl lg:text-6xl">
+                      Let's <span class="italic text-terminal-accent">talk</span>.
+                    </h2>
+                    <p class="mt-5 max-w-2xl text-lg leading-relaxed text-pretty text-terminal-muted">
+                      Have a backend that needs to stay up, a platform to untangle, or a startup looking for a mentor? Send me a message.
+                    </p>
+                  </div>
+                  
+                  <div class="mt-10">
+                    <p class="font-mono text-xs uppercase tracking-[0.2em] text-terminal-muted">Email</p>
+                    <a href="mailto:moein.abbasi@gmail.com" class="mt-3 inline-flex items-center gap-3 break-all font-heading text-3xl leading-tight underline decoration-terminal-border decoration-1 underline-offset-8 transition-colors hover:text-terminal-accent hover:decoration-terminal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent sm:text-4xl lg:text-3xl xl:text-4xl">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-6 shrink-0 text-terminal-accent" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                      moein.abbasi@gmail.com
+                    </a>
+                  </div>
+                  
+                  <div class="mt-12">
+                    <p class="font-mono text-xs uppercase tracking-[0.2em] text-terminal-muted">Elsewhere</p>
+                    <ul class="mt-3 divide-y divide-terminal-border border-y border-terminal-border">
+                      <li>
+                        <a href="https://www.linkedin.com/in/amoein/" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 py-4 transition-colors hover:text-terminal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">
+                          <span class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin size-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                            <span class="font-medium">LinkedIn</span><span class="font-mono text-xs text-terminal-muted">in/amoein</span>
+                          </span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 text-terminal-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-terminal-accent" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://github.com/amoein" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 py-4 transition-colors hover:text-terminal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">
+                          <span class="flex items-center gap-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github size-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                            <span class="font-medium">GitHub</span><span class="font-mono text-xs text-terminal-muted">@amoein</span>
+                          </span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 text-terminal-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-terminal-accent" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://medium.com/@amoein.devops" target="_blank" rel="noopener noreferrer" class="group flex items-center justify-between gap-4 py-4 transition-colors hover:text-terminal-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">
+                          <span class="flex items-center gap-3">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-5"><ellipse cx="6.6" cy="12" rx="5.6" ry="5.7"></ellipse><ellipse cx="15.6" cy="12" rx="2.8" ry="5.35"></ellipse><ellipse cx="20.9" cy="12" rx="1.05" ry="4.8"></ellipse></svg>
+                            <span class="font-medium">Medium</span><span class="font-mono text-xs text-terminal-muted">@amoein.devops</span>
+                          </span>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-right size-5 text-terminal-muted transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-terminal-accent" aria-hidden="true"><path d="M7 7h10v10"></path><path d="M7 17 17 7"></path></svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="lg:col-span-7">
+                  <div class="rounded-3xl bg-card p-6 text-foreground shadow-2xl shadow-black/30 sm:p-10">
+                    <h3 class="font-heading text-3xl leading-tight sm:text-4xl">Send a message</h3>
+                    <p class="mt-2 mb-8 text-muted-foreground">Tell me a little about what you have in mind.</p>
+                    <form novalidate="" aria-describedby="contact-form-note" class="relative space-y-5" action="mailto:moein.abbasi@gmail.com" method="POST" enctype="text/plain">
+                      <div class="grid gap-5 sm:grid-cols-2">
+                        <div>
+                          <label for="contact-name" class="mb-2 block text-sm font-medium">Name</label>
+                          <input id="contact-name" type="text" autocomplete="name" maxlength="100" placeholder="Your name" class="block w-full rounded-xl border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 transition-colors focus:outline-none focus:ring-2 focus:ring-signal/40 border-input focus:border-signal" name="name" />
+                        </div>
+                        <div>
+                          <label for="contact-email" class="mb-2 block text-sm font-medium">Email</label>
+                          <input id="contact-email" type="email" autocomplete="email" inputmode="email" maxlength="254" placeholder="you@company.com" class="block w-full rounded-xl border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 transition-colors focus:outline-none focus:ring-2 focus:ring-signal/40 border-input focus:border-signal" name="email" />
+                        </div>
+                      </div>
+                      <div>
+                        <label for="contact-message" class="mb-2 block text-sm font-medium">Message</label>
+                        <textarea id="contact-message" name="message" rows="6" maxlength="5000" placeholder="What are you working on, and how can I help?" class="block w-full rounded-xl border bg-background px-4 py-3 text-base text-foreground placeholder:text-muted-foreground/70 transition-colors focus:outline-none focus:ring-2 focus:ring-signal/40 border-input focus:border-signal resize-y"></textarea>
+                      </div>
+                      <div class="flex flex-col-reverse gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
+                        <p id="contact-form-note" class="text-sm text-muted-foreground">Your message goes straight to my inbox.</p>
+                        <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-background bg-signal text-signal-foreground shadow-sm shadow-signal/20 hover:bg-signal/90 h-12 px-6 text-base w-full sm:w-auto">
+                          Send message
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right size-4" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+          <!-- Footer -->
+          <footer class="border-t border-terminal-border bg-terminal text-terminal-foreground">
+            <div class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
+              <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+                <div class="max-w-sm">
+                  <a href="#hero" class="inline-flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent focus-visible:ring-offset-4 focus-visible:ring-offset-terminal">
+                    <svg viewBox="0 0 32 32" aria-hidden="true" class="size-8 text-terminal-foreground">
+                      <rect width="32" height="32" rx="7" fill="currentColor"></rect>
+                      <path d="M8 22 L14 12 L19 18 L24 9" fill="none" stroke="#f6f3ec" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      <circle cx="8" cy="22" r="2.6" fill="#f6f3ec"></circle>
+                      <circle cx="14" cy="12" r="2.2" fill="#f6f3ec"></circle>
+                      <circle cx="19" cy="18" r="2.2" fill="#f6f3ec"></circle>
+                      <circle cx="24" cy="9" r="3" fill="#c2410c"></circle>
+                    </svg>
+                    <span class="font-heading text-[1.6rem] leading-none tracking-tight">Moein Abbasi</span>
+                  </a>
+                  <p class="mt-4 text-sm leading-relaxed text-terminal-muted">DevOps &amp; software engineer, based in Türkiye.</p>
+                </div>
+                
+                <nav aria-label="Footer">
+                  <ul class="grid grid-cols-2 gap-x-10 gap-y-3 text-sm sm:grid-cols-3">
+                    <li><a href="#about" class="text-terminal-muted transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">About</a></li>
+                    <li><a href="#experience" class="text-terminal-muted transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">Experience</a></li>
+                    <li><a href="#projects" class="text-terminal-muted transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">Open source</a></li>
+                    <li><a href="#writing" class="text-terminal-muted transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">Writing</a></li>
+                    <li><a href="#contact" class="text-terminal-muted transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">Contact</a></li>
+                  </ul>
+                </nav>
+                
+                <ul class="flex items-center gap-2">
+                  <li>
+                    <a href="https://github.com/amoein" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-terminal-border text-terminal-foreground hover:border-terminal-accent hover:text-terminal-accent focus-visible:ring-terminal-accent focus-visible:ring-offset-terminal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github size-5"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.linkedin.com/in/amoein/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-terminal-border text-terminal-foreground hover:border-terminal-accent hover:text-terminal-accent focus-visible:ring-terminal-accent focus-visible:ring-offset-terminal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin size-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://medium.com/@amoein.devops" target="_blank" rel="noopener noreferrer" aria-label="Medium (opens in a new tab)" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-terminal-border text-terminal-foreground hover:border-terminal-accent hover:text-terminal-accent focus-visible:ring-terminal-accent focus-visible:ring-offset-terminal">
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-5"><ellipse cx="6.6" cy="12" rx="5.6" ry="5.7"></ellipse><ellipse cx="15.6" cy="12" rx="2.8" ry="5.35"></ellipse><ellipse cx="20.9" cy="12" rx="1.05" ry="4.8"></ellipse></svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="mailto:moein.abbasi@gmail.com" aria-label="Email" class="flex size-10 items-center justify-center rounded-full border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 border-terminal-border text-terminal-foreground hover:border-terminal-accent hover:text-terminal-accent focus-visible:ring-terminal-accent focus-visible:ring-offset-terminal">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail size-5"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="mt-12 flex flex-col-reverse gap-4 border-t border-terminal-border pt-6 text-xs text-terminal-muted sm:flex-row sm:items-center sm:justify-between">
                 <p class="font-mono">© 2026 Moein Abbasi</p>
+                <a href="#hero" class="inline-flex items-center gap-1.5 font-mono uppercase tracking-[0.18em] transition-colors hover:text-terminal-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terminal-accent">
+                  Back to top
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up size-4"><path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path></svg>
+                </a>
               </div>
             </div>
           </footer>
+          
         </div>
       </div>
     </div>
 
-    <!-- Mobile Menu Script to handle navigation without Next.js -->
+    <!-- Script to handle Mobile Menu Toggle -->
     <script>
-      document
-        .getElementById("mobile-menu-btn")
-        .addEventListener("click", function () {
-          const menu = document.getElementById("mobile-menu");
-          menu.classList.toggle("hidden");
+      document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+        
+        // Update aria-expanded
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+      });
+      
+      // Close mobile menu when clicking a link
+      document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mobile-menu').classList.add('hidden');
+          document.getElementById('mobile-menu-btn').setAttribute('aria-expanded', 'false');
         });
+      });
     </script>
   </body>
 </html>
